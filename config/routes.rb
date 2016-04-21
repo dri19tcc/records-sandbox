@@ -7,6 +7,23 @@ Rails.application.routes.draw do
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  # root 'home#index' #this is same as line 11
+
+  root 'albums#index'
+  get '/albums/new' => 'albums#new'
+  post '/albums' => 'albums#create', as: 'albums'
+  get '/:artist' => 'albums#by_artist'
+
+  # get "/" => "home#index"
+  #we define what users ask for, and we choose where they go.
+  # get "/jack" => "home#jack"
+  # get "/:name" => "home#index"
+  #get is a method call /:name => home#index is a hash
+  # This route has a dynamic parameter.  :name was getting captured in the params hash
+  # This is for reuse and not leaning on the params hash is easier to reuse.  In
+  # your controller, save it as an instance variable
+
+  # --------------Above is relevent to what we're doing ---------------
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
