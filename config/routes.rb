@@ -9,10 +9,24 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   # root 'home#index' #this is same as line 11
 
-  root 'albums#index'
-  get '/albums/new' => 'albums#new'
-  post '/albums' => 'albums#create', as: 'albums'
-  get '/:artist' => 'albums#by_artist'
+
+
+  root    'albums#index'
+
+  get     '/albums'           => 'albums#index', as: 'albums'
+  post    '/albums'           => 'albums#create'
+  get     '/albums/new'       => 'albums#new'
+  get     '/albums/:id'       => 'albums#show', as: 'album'
+  delete  '/albums/:id'       => 'albums#destroy'
+  get     '/albums/:id/edit'  => 'albums#edit', as: 'edit_album'
+  patch   '/albums/:id'       => 'albums#update'
+
+  # get   '/albums/by_year/:year' => 'albums#by_year'
+  # get   '/artist/:id/albums'
+
+  # get '/artist/:artist'     => 'albums#by_artist'
+
+
 
   # get "/" => "home#index"
   #we define what users ask for, and we choose where they go.

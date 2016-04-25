@@ -3,7 +3,7 @@
 <ul>
   <% @albums.each do |album| %>
   <li> <!-- We can feed link_to where we want it to go.  It then matches.   -->
-    <%= link_to album.artist, "/#{album.artist}" %>: <%= album.title %>
+    <%= album.artist %>: <%= link_to album.title, album_path(album.id) %>
   </li>
   <% end %>
 </ul>
